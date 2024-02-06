@@ -99,12 +99,13 @@ class DLinear__Tensorflow(tf.keras.Model):
         # print(f'{x.shape = }')
         return x # [Batch, Output length, Channel]
 
-class NDLinearTime2VecRevIN__Tensorflow(tf.keras.Model):
+class NDLinearTime2VecRevIN__Tensorflow(DLinear__Tensorflow):
     """
     Decomposition-Linear with additional Time2Vec
     """
     def __init__(self, seq_len, pred_len, channels_in, channels_out, individual, activation=None, seed=941):
-        # super(NDLinearTime2VecRevIN__Tensorflow, self).__init__(seq_len, pred_len, channels_in, channels_out, individual, activation=activation)
+        # super(NDLinearTime2VecRevIN__Tensorflow, self).__init__()
+        super(NDLinearTime2VecRevIN__Tensorflow, self).__init__(seq_len, pred_len, channels_in, channels_out, individual, activation=activation)
         self.time2vec_kernel_size = 128
         self.seq_len = seq_len
         self.pred_len = pred_len

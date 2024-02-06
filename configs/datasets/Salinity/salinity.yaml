@@ -1,4 +1,4 @@
-path: .\data\Salinity\processed\by_station
+path: .\data\Salinity\processed\by_station-mekong
 target: average
 date: date
 features:
