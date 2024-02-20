@@ -19,7 +19,12 @@ model_dict = [
         'model'  : LTSF_NDLinearTime2VecRevIN__Tensorflow,
         'type'   : 'Tensorflow',
         'config' : r'.\configs\models\DeepLearning\LTSF_DLinear__Tensorflow.yaml'
-    }
+    },{
+        'model'  : ResLSTM__Tensorflow,
+        'type'   : 'Tensorflow',
+        'config' : r'.\configs\models\DeepLearning\LTSF_DLinear__Tensorflow.yaml'
+    },
+    
 ]
 
 for model in model_dict:

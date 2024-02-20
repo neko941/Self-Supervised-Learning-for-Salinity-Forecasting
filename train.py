@@ -76,6 +76,7 @@ def main(opt):
 
     """ Save updated options """
     yaml_save(path_configs / 'updated_opt.yaml', vars(opt))
+    # opt.patience = 80
 
     """ Preprocessing dataset """
     X_train = []

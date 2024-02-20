@@ -21,7 +21,7 @@ template = {
 
 datasets = [
 	{
-		'path': r'.\data\Salinity\processed\by_station',
+		'path': r'.\data\Salinity\processed\by_station-mekong',
 		'target': 'average',
 		'date': 'date',
 		'features': ['station'],
@@ -93,6 +93,8 @@ if __name__ == '__main__':
 	project = 'paper'
 
 	for datum in data:
+		if datum["Case"] not in [6, 7, 13, 14, 20, 21, 27, 28]: continue
+		# if datum["Case"] < 22: continue
 		if project is None:
 			project = datum['project']
 
@@ -100,8 +102,9 @@ if __name__ == '__main__':
 		if datum['weight'] != 'None':
 			for weight in os.listdir(os.path.join(project, datum['weight'], 'weights')):
 				# print(f"{os.path.join('runs', datum['weight'], 'weights', weight) = }")
-				if 'LTSF' in weight:
-					weights[f'{weight}_weight'] = os.path.join(project, datum['weight'], 'weights', weight, 'best', f'{weight}_best.index')
+				# if 'LTSF' in weight:
+				# 	weights[f'{weight}_weight'] = os.path.join(project, datum['weight'], 'weights', weight, 'best', f'{weight}_best.index')
+				weights[f'{weight}_weight'] = os.path.join(project, datum['weight'], 'weights', weight, 'best', f'{weight}_best.index')
 		if datum['normalization'] == 'None':
 			datum['normalization'] = None
 		configs = []
@@ -187,6 +190,7 @@ if __name__ == '__main__':
 			batchsz=datum['batchsz'],
 			ensemble=datum['ensemble'],
 			LTSF=datum['LTSF'],
+			ResLSTM__Tensorflow=datum['ResLSTM'],
 			LTSF_NDLinearTime2VecRevIN__Tensorflow=datum['NDLinearTime2VecRevIN'],
 			normalization=datum['normalization'],
 			lag=datum['lag'],
